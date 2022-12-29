@@ -1,4 +1,4 @@
-// Creacón de objetos 
+// OBJETOS
 
 //Creador de Jugador
 function Player(name){
@@ -6,20 +6,23 @@ function Player(name){
     this.points = 0
     this.win    = function() {console.log( `The Winner is ${this.name}` )}
     this.ships  = {
-        lancha1 : ship("lancha",1,"🚤"),
-        lancha2 : ship("lancha",1,"🚤"),
-        lancha3 : ship("lancha",1,"🚤"),
+        
+        portaaviones1 : new ship("portaaviones",5,"🛫"), 
 
-        crucero1: ship("crucero",2,"⛵"),
-        crucero2: ship("crucero",2,"⛵"),
-        crucero3: ship("crucero",2,"⛵"),
-
-        submarino1 : ship("submarino",3,"🚇"), 
-        submarino2 : ship("submarino",3,"🚇"), 
-
-        buque1 : ship("buque",4,"🚢"), 
-
-        portaaviones1 : ship("portaaviones",5,"🛫") 
+        buque1 : new ship("buque",4,"🚢"), 
+        
+        submarino1 : new ship("submarino",3,"🚇"), 
+        submarino2 : new ship("submarino",3,"🚇"), 
+        
+        crucero1: new ship("crucero",2,"⛵"),
+        crucero2: new ship("crucero",2,"⛵"),
+        crucero3: new ship("crucero",2,"⛵"),
+        
+        lancha1 : new ship("lancha",1,"🚤"),
+        lancha2 : new ship("lancha",1,"🚤"),
+        lancha3 : new ship("lancha",1,"🚤")
+        
+        
 
     }
    
@@ -37,6 +40,12 @@ function ship(name,nposition,img){
 
     return this
 }
+
+
+
+
+
+
 
 
 module.exports = {
