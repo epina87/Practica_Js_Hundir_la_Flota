@@ -1,7 +1,8 @@
 // FUNCIONES
 
 module.exports = {
-    "buscar_posiciones": buscar_posiciones
+    "buscar_posiciones": buscar_posiciones,
+    "Buscar_Posicion_Inicial":Buscar_Posicion_Inicial
 }
 
 
@@ -72,7 +73,7 @@ function valor_aletorio(max,min){
     return Math.floor((Math.random() * (max - min + 1)) + min);
 }
 
-function validar_espacio_horizontal(position_ship,pos_x,pos_y,positions_P1){
+function validar_espacio_horizontal(position_ship,pos_x,pos_y,positions_Play){
     let position=[]
     let nposition = position_ship
     let valido = "S"
@@ -86,7 +87,7 @@ function validar_espacio_horizontal(position_ship,pos_x,pos_y,positions_P1){
 
         
         const location = String(pos_x_new) + String(pos_y) 
-        const element = positions_P1.find(val => val == location)
+        const element = positions_Play.find(val => val == location)
         if (element != undefined){ 
             valido = "N"
         }else{
@@ -98,7 +99,7 @@ function validar_espacio_horizontal(position_ship,pos_x,pos_y,positions_P1){
     return validar_posicion=[valido,posicion_total]
 }
 
-function validar_espacio_vertical(position_ship,pos_x,pos_y,positions_P1){
+function validar_espacio_vertical(position_ship,pos_x,pos_y,positions_Play){
     nposition = position_ship
     valido = "S"
     posicion_total = []
@@ -111,7 +112,7 @@ function validar_espacio_vertical(position_ship,pos_x,pos_y,positions_P1){
 
         
         const location = String(pos_x) + String(pos_y_new) 
-        const element = positions_P1.find(val => val == location)
+        const element = positions_Play.find(val => val == location)
         if (element != undefined){ 
             valido = "N"
         }else{
@@ -125,7 +126,7 @@ function validar_espacio_vertical(position_ship,pos_x,pos_y,positions_P1){
 }
 
 
-function Buscar_Posicion_Inicial(positions_P1){
+function Buscar_Posicion_Inicial(positions_Play){
     valido = "N"
     let pos_x=0
     let pos_y=0
@@ -134,7 +135,7 @@ function Buscar_Posicion_Inicial(positions_P1){
         pos_y =   valor_aletorio(-1,10)
 
         const location = String(pos_x) + String(pos_y)
-        const element = positions_P1.find(val => val == location)
+        const element = positions_Play.find(val => val == location)
 
         if (element == undefined){
             valido  ="S"

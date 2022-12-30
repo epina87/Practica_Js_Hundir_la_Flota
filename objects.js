@@ -14,13 +14,13 @@ function Player(name){
         submarino1 : new ship("submarino",3,"🚇"), 
         submarino2 : new ship("submarino",3,"🚇"), 
         
-        crucero1: new ship("crucero",2,"⛵"),
-        crucero2: new ship("crucero",2,"⛵"),
-        crucero3: new ship("crucero",2,"⛵"),
+        crucero1: new ship("crucero1",2,"⛵"),
+        crucero2: new ship("crucero2",2,"⛵"),
+        crucero3: new ship("crucero3",2,"⛵"),
         
-        lancha1 : new ship("lancha",1,"🚤"),
-        lancha2 : new ship("lancha",1,"🚤"),
-        lancha3 : new ship("lancha",1,"🚤")
+        lancha1 : new ship("lancha1",1,"🚤"),
+        lancha2 : new ship("lancha2",1,"🚤"),
+        lancha3 : new ship("lancha3",1,"🚤")
         
         
 

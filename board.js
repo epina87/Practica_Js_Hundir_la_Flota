@@ -75,7 +75,9 @@ function viewBoarsPlayer(Player,positions_Play){
                                    if (element == undefined){ 
                                           lineBoard += " '"+FIGURES[0] +"' │"
                                    }else{
-                                          figureImg =               
+                                          figureImg = searchFigures(Player,location)    
+                                          lineBoard += " '"+figureImg+"' │"
+
                                    }
                                    
                             } 
@@ -86,4 +88,25 @@ function viewBoarsPlayer(Player,positions_Play){
        }
        console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
        
+}
+
+
+
+
+function searchFigures(Player,location){
+       let figureImg= FIGURES[0]
+       for (let key of Object.keys(Player.ships)){
+              const locationShip = Player.ships[key].location
+
+              const element = locationShip.find(val => val == location)
+              if (element != undefined){ 
+                     figureImg = Player.ships[key].img       
+              }
+
+              
+
+
+       }       
+
+       return figureImg
 }

@@ -1,6 +1,7 @@
 const objects = require("./objects")
 const board = require("./board")
 const funct = require("./function")
+const game = require("./game")
 
 //const ships_old = ['portaaviones1','buque1','submarino1','submarino2','crucero1','crucero2','crucero3','lancha1','lancha2','lancha3']
 
@@ -24,13 +25,24 @@ console.log("========= The Battleship simulator starts =========")
 console.log("===================================================")
 
 console.log("")
+
+
+console.log("Player A")
+console.log("Own board:")
+board.viewBoarsPlayer(Player1,positions_P1)
 console.log("")
 
 console.log("Player A")
 console.log("Own board:")
+board.viewBoarsPlayer(Player2,positions_P2)
+console.log("")
 
+console.log( "==================================")
+console.log("========= The game starts =========")
+console.log("===================================")
 
-board.viewBoarsPlayer(Player1,positions_P1)
+game.startGame(Player1,positions_P1,Player2,positions_P2)
+
 
 //board.viewBoars()
 
