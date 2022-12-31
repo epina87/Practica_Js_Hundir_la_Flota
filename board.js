@@ -3,7 +3,8 @@
 module.exports = {
        "viewBoars": viewBoars,
        "viewBoarsPlayer":viewBoarsPlayer,
-       "viewBoarsPlayerGame":viewBoarsPlayerGame
+       "viewBoarsPlayerGame":viewBoarsPlayerGame,
+       "viewBoarsPlayerGameEnemy":viewBoarsPlayerGameEnemy
    }
 
 // filas del tablero
@@ -151,6 +152,51 @@ function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
                                    }else{
                                           
                                           figureImg = PlayerEnemy.shooter[location]  
+                                          lineBoard += " '"+figureImg+"' │"
+
+                                   }
+                                   
+                            } 
+                                   
+                     }
+                     console.log(lineBoard)                 
+              }      
+       }
+       console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
+       
+}
+
+function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
+       for(let numRows = 0; numRows < ROWS+1; numRows++) {
+              let pos_x = numRows-1
+              
+
+              let lineBoard = ''
+              let numRowsString = String(numRows-1) 
+              if (numRows == 0){
+                     console.log("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
+                     lineBoard ="│ (index) |"
+                     for(let numCols = 0; numCols < COLS; numCols++){
+                     
+                            let numColsString = String(numCols)        
+                            lineBoard += '   '+numColsString+'  │'
+                     } 
+                     console.log(lineBoard)
+                     console.log("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
+              }else{              
+                     for(let numCols = 0; numCols < COLS+1; numCols++){
+                            let pos_y = numCols-1
+
+                            if (numCols == 0){                                   
+                                   lineBoard += '|    '+numRowsString+'    │'
+                            } else{
+                                   const location = String(pos_x) + String(pos_y) 
+                                   const element = listshoot.find(val => val == location)
+                                   if (element == undefined){ 
+                                          lineBoard += " '"+FIGURES[0] +"' │"
+                                   }else{
+                                          
+                                          figureImg = PlayerBoard.shooter[location]  
                                           lineBoard += " '"+figureImg+"' │"
 
                                    }

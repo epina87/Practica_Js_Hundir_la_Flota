@@ -10,8 +10,8 @@ const game = require("./game")
 let Player1 = new objects.Player("Enric")
 let Player2 = new objects.Player("Silvia")
 
+let playerWin= ""
 
-// Player1.win()
 
 
 const positions_P1 = funct.buscar_posiciones (Player1)
@@ -40,12 +40,42 @@ console.log( "==================================")
 console.log("========= The game starts =========")
 console.log("===================================")
 
-game.startGame(Player1,positions_P1,Player2,positions_P2)
+const listshoot = game.startGame(Player1,positions_P1,Player2,positions_P2)
+const listshootA = listshoot[0]
+const listshootB = listshoot[1]
+
+console.log("")
+console.log("")
+
+if (Player1.points > Player2.points ){
+    Player1.win()
+    playerWin = "Player A"
+}else if (Player2.points > Player1.points ){
+        Player2.win()
+        playerWin = "Player B"
+    }else{
+        console.log( `The result is a tie` )
+        playerWin = "Player A and Player B"
+    }
+
+console.log("")
+
+console.log( "==================================")
+console.log(`========= ${playerWin} =========`)
+console.log("===================================")
+
+console.log("And the final boards are")
+
+console.log("Player A")
+console.log("Own board:")
+board.viewBoarsPlayerGame(Player1,Player2,listshootB,positions_P1)
+
+console.log("")
+console.log("Player B")
+console.log("Own board:")
+board.viewBoarsPlayerGame(Player2,Player1,listshootA,positions_P2)
 
 
-//board.viewBoars()
-
-board.viewBoarsPlayer(Player2,positions_P2)
 
 
 

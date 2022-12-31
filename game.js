@@ -71,7 +71,6 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
     location_P1 = SearchLocation(Player1)
     location_P2 = SearchLocation(Player2)
     
-
     while(numberShootA>numShootA || numberShootB>numShootB  ){
 
         if (turnPlayer == "A" && numberShootA>numShootA ){ 
@@ -92,7 +91,10 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
 
             console.log("Own board:")
             board.viewBoarsPlayerGame(Player1,Player2,listshootB,positions_P1)
-            
+
+            console.log("Enemy board:")
+            board.viewBoarsPlayerGameEnemy(Player1,listshootA)
+            console.log("")
             
             ++numShootA
 
@@ -121,6 +123,8 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
             console.log("Own board:")
             board.viewBoarsPlayerGame(Player2,Player1,listshootA,positions_P2)
 
+            console.log("Enemy board:")
+            board.viewBoarsPlayerGameEnemy(Player2,listshootB)
 
             ++numShootB
 
@@ -140,10 +144,6 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
             break
         }
         
-
-        
-
-
         if (numberShootB==numShootB){
             turnPlayer = "A"    
         }if (numberShootA==numShootA){
@@ -151,6 +151,9 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
         }
        
     }
+
+
+    return[listshootA,listshootB]
 
 }
 
