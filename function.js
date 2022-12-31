@@ -6,17 +6,17 @@ module.exports = {
 }
 
 
-let positions_Play=[]
+
 
 
 /* Funciones */
 
-function buscar_posiciones (Player1){
-    for (let key of Object.keys(Player1.ships)){
+function buscar_posiciones (Player){
+    let positions_Play=[]
+    
+    for (let key of Object.keys(Player.ships)){
         
-        const ship = Player1.ships[key] 
-
-        
+        const ship = Player.ships[key]         
         let position_ship = ship.nposition
 
         

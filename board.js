@@ -2,7 +2,8 @@
 
 module.exports = {
        "viewBoars": viewBoars,
-       "viewBoarsPlayer":viewBoarsPlayer
+       "viewBoarsPlayer":viewBoarsPlayer,
+       "viewBoarsPlayerGame":viewBoarsPlayerGame
    }
 
 // filas del tablero
@@ -91,8 +92,6 @@ function viewBoarsPlayer(Player,positions_Play){
 }
 
 
-
-
 function searchFigures(Player,location){
        let figureImg= FIGURES[0]
        for (let key of Object.keys(Player.ships)){
@@ -109,4 +108,59 @@ function searchFigures(Player,location){
        }       
 
        return figureImg
+}
+
+
+function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
+       for(let numRows = 0; numRows < ROWS+1; numRows++) {
+              let pos_x = numRows-1
+              
+
+              let lineBoard = ''
+              let numRowsString = String(numRows-1) 
+              if (numRows == 0){
+                     console.log("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
+                     lineBoard ="│ (index) |"
+                     for(let numCols = 0; numCols < COLS; numCols++){
+                     
+                            let numColsString = String(numCols)        
+                            lineBoard += '   '+numColsString+'  │'
+                     } 
+                     console.log(lineBoard)
+                     console.log("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
+              }else{              
+                     for(let numCols = 0; numCols < COLS+1; numCols++){
+                            let pos_y = numCols-1
+
+                            if (numCols == 0){                                   
+                                   lineBoard += '|    '+numRowsString+'    │'
+                            } else{
+                                   const location = String(pos_x) + String(pos_y) 
+                                   const element = listshoot.find(val => val == location)
+                                   if (element == undefined){ 
+
+                                          const elementPosicion = positions_Play.find(val => val == location)
+                                          if (elementPosicion == undefined){ 
+                                                 lineBoard += " '"+FIGURES[0] +"' │"
+                                          }else{
+                                                 figureImg = searchFigures(PlayerBoard,location)    
+                                                 lineBoard += " '"+figureImg+"' │"
+
+                                          }
+
+                                   }else{
+                                          
+                                          figureImg = PlayerEnemy.shooter[location]  
+                                          lineBoard += " '"+figureImg+"' │"
+
+                                   }
+                                   
+                            } 
+                                   
+                     }
+                     console.log(lineBoard)                 
+              }      
+       }
+       console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
+       
 }

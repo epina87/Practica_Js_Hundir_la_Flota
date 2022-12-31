@@ -14,10 +14,9 @@ let Player2 = new objects.Player("Silvia")
 // Player1.win()
 
 
-
-
 const positions_P1 = funct.buscar_posiciones (Player1)
 const positions_P2 =funct.buscar_posiciones (Player2)
+
 
 
 console.log( "===================================================")
@@ -32,7 +31,7 @@ console.log("Own board:")
 board.viewBoarsPlayer(Player1,positions_P1)
 console.log("")
 
-console.log("Player A")
+console.log("Player B")
 console.log("Own board:")
 board.viewBoarsPlayer(Player2,positions_P2)
 console.log("")
@@ -45,6 +44,8 @@ game.startGame(Player1,positions_P1,Player2,positions_P2)
 
 
 //board.viewBoars()
+
+board.viewBoarsPlayer(Player2,positions_P2)
 
 
 
