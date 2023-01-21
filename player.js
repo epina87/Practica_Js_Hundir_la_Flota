@@ -1,15 +1,14 @@
-// OBJETOS
+// PLAYER AND SHIP
 
-//module.exports = {
-//    "Player": Player
-//}
+//Import 
+import {printLine} from "./printer.js"
 
 //Creador de Jugador
 export function player(name,cod){
     this.name   = name
     this.cod    = cod
     this.points = 0
-    this.win    = function() {console.log( `The Winner is ${this.name}` )}
+    this.win    = function() {printLine( `The Winner is ${this.name}` )}
     this.ships  = {
         
         portaaviones1 : new ship("portaaviones1",5,"🛫"), 
@@ -28,8 +27,6 @@ export function player(name,cod){
         lancha3 : new ship("lancha3",1,"🚤")
     }
     this.shooter={}
-   
-     
 
     return this
 }

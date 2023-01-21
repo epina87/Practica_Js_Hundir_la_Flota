@@ -1,11 +1,7 @@
-// TABLERO
+// BOARD
 
-/*module.exports = {
-       "viewBoars": viewBoars,
-       "viewBoarsPlayer":viewBoarsPlayer,
-       "viewBoarsPlayerGame":viewBoarsPlayerGame,
-       "viewBoarsPlayerGameEnemy":viewBoarsPlayerGameEnemy
-   }*/
+//Import 
+import {printLine} from "./printer.js"
 
 // filas del tablero
 const ROWS = 10
@@ -16,7 +12,7 @@ const FIGURES = ['⚓']
 
 
 //Lista de valores verticales
-const lineABC = {
+export const lineABC = {
        0 : "A",
        1 : "B",
        2 : "C",
@@ -37,15 +33,15 @@ export function viewBoars(){
               let lineBoard = ''
               let numRowsString = String(numRows-1) 
               if (numRows == 0){
-                     console.log("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
+                     printLine("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
                             let numColsString = String(numCols)        
                             lineBoard += '   '+numColsString+'  │'
                      } 
-                     console.log(lineBoard)
-                     console.log("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
+                     printLine(lineBoard)
+                     printLine("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
               }else{              
                      for(let numCols = 0; numCols < COLS+1; numCols++){
                             if (numCols == 0){                                   
@@ -55,22 +51,22 @@ export function viewBoars(){
                             } 
                                    
                      }
-                     console.log(lineBoard)                 
+                     printLine(lineBoard)                 
               }      
        }
-       console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
+       printLine("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
        
 }
 
-export function viewBoarsPlayer(Player,positions_Play){
+export function viewBoarsPlayer(Player,positionsPlay){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
-              let pos_x = numRows-1
+              let posX = numRows-1
               
 
               let lineBoard = ''
               let numRowsString = String(numRows-1) 
               if (numRows == 0){
-                     console.log("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
+                     printLine("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
@@ -78,17 +74,17 @@ export function viewBoarsPlayer(Player,positions_Play){
                             let numColsString = lineABC[numCols]
                             lineBoard += '   '+numColsString+'  │'
                      } 
-                     console.log(lineBoard)
-                     console.log("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
+                     printLine(lineBoard)
+                     printLine("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
               }else{              
                      for(let numCols = 0; numCols < COLS+1; numCols++){
-                            let pos_y = numCols-1
+                            let posY = numCols-1
 
                             if (numCols == 0){                                   
                                    lineBoard += '|    '+numRowsString+'    │'
                             } else{
-                                   const location = String(pos_x) + String(pos_y) 
-                                   const element = positions_Play.find(val => val == location)
+                                   const location = String(posX) + String(posY) 
+                                   const element = positionsPlay.find(val => val == location)
                                    if (element == undefined){ 
                                           lineBoard += " '"+FIGURES[0] +"' │"
                                    }else{
@@ -100,10 +96,10 @@ export function viewBoarsPlayer(Player,positions_Play){
                             } 
                                    
                      }
-                     console.log(lineBoard)                 
+                     printLine(lineBoard)                 
               }      
        }
-       console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
+       printLine("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
        
 }
 
@@ -125,15 +121,15 @@ export function searchFigures(Player,location){
        return figureImg
 }
 
-export function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
+export function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positionsPlay){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
-              let pos_x = numRows-1
+              let posX = numRows-1
               
 
               let lineBoard = ''
               let numRowsString = String(numRows-1) 
               if (numRows == 0){
-                     console.log("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
+                     printLine("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
@@ -141,20 +137,20 @@ export function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_
                             let numColsString = lineABC[numCols]
                             lineBoard += '   '+numColsString+'  │'
                      } 
-                     console.log(lineBoard)
-                     console.log("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
+                     printLine(lineBoard)
+                     printLine("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
               }else{              
                      for(let numCols = 0; numCols < COLS+1; numCols++){
-                            let pos_y = numCols-1
+                            let posY = numCols-1
 
                             if (numCols == 0){                                   
                                    lineBoard += '|    '+numRowsString+'    │'
                             } else{
-                                   const location = String(pos_x) + String(pos_y) 
+                                   const location = String(posX) + String(posY) 
                                    const element = listshoot.find(val => val == location)
                                    if (element == undefined){ 
 
-                                          const elementPosicion = positions_Play.find(val => val == location)
+                                          const elementPosicion = positionsPlay.find(val => val == location)
                                           if (elementPosicion == undefined){ 
                                                  lineBoard += " '"+FIGURES[0] +"' │"
                                           }else{
@@ -173,22 +169,22 @@ export function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_
                             } 
                                    
                      }
-                     console.log(lineBoard)                 
+                     printLine(lineBoard)                 
               }      
        }
-       console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
+       printLine("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
        
 }
 
 export function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
-              let pos_x = numRows-1
+              let posX = numRows-1
               
 
               let lineBoard = ''
               let numRowsString = String(numRows-1) 
               if (numRows == 0){
-                     console.log("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
+                     printLine("┌─────────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐")
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
@@ -196,16 +192,16 @@ export function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
                             let numColsString = lineABC[numCols]      
                             lineBoard += '   '+numColsString+'  │'
                      } 
-                     console.log(lineBoard)
-                     console.log("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
+                     printLine(lineBoard)
+                     printLine("├─────────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┼──────┤")      
               }else{              
                      for(let numCols = 0; numCols < COLS+1; numCols++){
-                            let pos_y = numCols-1
+                            let posY = numCols-1
 
                             if (numCols == 0){                                   
                                    lineBoard += '|    '+numRowsString+'    │'
                             } else{
-                                   const location = String(pos_x) + String(pos_y) 
+                                   const location = String(posX) + String(posY) 
                                    const element = listshoot.find(val => val == location)
                                    if (element == undefined){ 
                                           lineBoard += " '"+FIGURES[0] +"' │"
@@ -219,9 +215,9 @@ export function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
                             } 
                                    
                      }
-                     console.log(lineBoard)                 
+                     printLine(lineBoard)                 
               }      
        }
-       console.log("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
+       printLine("└─────────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘") 
        
 }

@@ -22,15 +22,9 @@ barcos {
 
 // Crear package.jdon en node -> npm init --yes
 
-
-//const player = require("./player.js")
-//const board = require("./board.js")
-//const funct = require("./function.js")
-//const game = require("./game.js")
-
-
+//Import 
 import  {player}  from "./player.js" 
-import {buscar_posiciones} from "./function.js"
+import {searchPositions,printHeading,printLine} from "./printer.js"
 import {viewBoars,viewBoarsPlayer,viewBoarsPlayerGame,viewBoarsPlayerGameEnemy} from "./board.js"
 import {startGame} from "./game.js"
 
@@ -39,40 +33,34 @@ let Player2 = new player("Player B","p2")
 
 let playerWin= ""
 
+const positionsP1 = searchPositions (Player1)
+const positionsP2 = searchPositions (Player2)
+
+printHeading("The Battleship simulator starts")
+printLine("")
 
 
-const positions_P1 = buscar_posiciones (Player1)
-const positions_P2 = buscar_posiciones (Player2)
+printLine("Player A")
+printLine("Own board:")
+viewBoarsPlayer(Player1,positionsP1)
+printLine("")
 
 
-
-console.log( "===================================================")
-console.log("========= The Battleship simulator starts =========")
-console.log("===================================================")
-
-console.log("")
+printLine("Player B")
+printLine("Own board:")
+viewBoarsPlayer(Player2,positionsP2)
+printLine("")
 
 
-console.log("Player A")
-console.log("Own board:")
-viewBoarsPlayer(Player1,positions_P1)
-console.log("")
+printHeading("The game starts")
 
-console.log("Player B")
-console.log("Own board:")
-viewBoarsPlayer(Player2,positions_P2)
-console.log("")
 
-console.log( "==================================")
-console.log("========= The game starts =========")
-console.log("===================================")
-
-const listshoot = startGame(Player1,positions_P1,Player2,positions_P2)
+const listshoot = startGame(Player1,positionsP1,Player2,positionsP2)
 const listshootA = listshoot[0]
 const listshootB = listshoot[1]
 
-console.log("")
-console.log("")
+printLine("")
+
 
 if (Player1.points > Player2.points ){
     Player1.win()
@@ -85,22 +73,22 @@ if (Player1.points > Player2.points ){
         playerWin = "Player A and Player B"
     }
 
-console.log("")
+printLine("")
+printHeading(`${playerWin}`)
 
-console.log("===================================")
-console.log(`========= ${playerWin} =========`)
-console.log("===================================")
+printLine("And the final boards are")
 
-console.log("And the final boards are")
 
-console.log("Player A")
-console.log("Own board:")
-viewBoarsPlayerGame(Player1,Player2,listshootB,positions_P1)
+printLine("")
+printLine("Player A")
+printLine("Own board:")
+viewBoarsPlayerGame(Player1,Player2,listshootB,positionsP1)
 
-console.log("")
-console.log("Player B")
-console.log("Own board:")
-viewBoarsPlayerGame(Player2,Player1,listshootA,positions_P2)
+
+printLine("")
+printLine("Player B")
+printLine("Own board:")
+viewBoarsPlayerGame(Player2,Player1,listshootA,positionsP2)
 
 
 
