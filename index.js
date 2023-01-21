@@ -1,26 +1,5 @@
 // Hundir la flota 
 
-/* 
-leyenda 
-
-vacío   = ⚓
-agua    = 💧
-tocado  = 🎇
-hundido = 🚩
-barcos {
-    portaaviones = 🛫 
-    buque        = 🚢    
-    submarino    = 🚇 
-    crucero      = ⛵
-    lancha       = 🚤
-
-}
-
-
-*/
-
-
-// Crear package.jdon en node -> npm init --yes
 
 //Import 
 import  {player}  from "./player.js" 
