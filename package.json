@@ -1,0 +1,21 @@
+{
+  "name": "practica_final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epina87/Practica_Js_Hundir_la_Flota.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epina87/Practica_Js_Hundir_la_Flota/issues"
+  },
+  "homepage": "https://github.com/epina87/Practica_Js_Hundir_la_Flota#readme",
+  "type":"module"
+}

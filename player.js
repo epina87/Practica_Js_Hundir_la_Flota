@@ -1,12 +1,13 @@
 // OBJETOS
 
-module.exports = {
-    "Player": Player
-}
+//module.exports = {
+//    "Player": Player
+//}
 
 //Creador de Jugador
-function Player(name){
+export function player(name,cod){
     this.name   = name
+    this.cod    = cod
     this.points = 0
     this.win    = function() {console.log( `The Winner is ${this.name}` )}
     this.ships  = {

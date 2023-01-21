@@ -1,10 +1,15 @@
 // Partida
+
+import {buscar_posiciones,Buscar_Posicion_Inicial} from "./function.js"
+import {viewBoars,viewBoarsPlayer,viewBoarsPlayerGame,viewBoarsPlayerGameEnemy} from "./board.js"
+
+/*
 const funct = require("./function")
 const board = require("./board")
 
 module.exports = {
     "startGame": startGame   
-}
+} */
 
 // Contador de rondas
 let countRoundA = 0 
@@ -65,11 +70,28 @@ let listTouchedA = []
 let listTouchedB = []
 
 
+//Lista de valores verticales
+const lineABC = {
+    0 : "A",
+    1 : "B",
+    2 : "C",
+    3 : "D",
+    4 : "E",
+    5 : "F",
+    6 : "G",
+    7 : "H",
+    8 : "I",
+    9 : "J"  
+}
 
 
-function startGame(Player1,positions_P1,Player2,positions_P2){
-    location_P1 = SearchLocation(Player1)
-    location_P2 = SearchLocation(Player2)
+
+
+
+
+export function startGame(Player1,positions_P1,Player2,positions_P2){
+    let location_P1 = SearchLocation(Player1)
+    let location_P2 = SearchLocation(Player2)
     
     while(numberShootA>numShootA || numberShootB>numShootB  ){
 
@@ -80,20 +102,22 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
             console.log("=============")
 
 
-            const position = funct.Buscar_Posicion_Inicial(listshootA)
+            const position = Buscar_Posicion_Inicial(listshootA)
 
-            shootPoint =  String(position[0]) + String(position[1]) 
+            //const position = askForShot(Player1,listshootA)
+
+            let shootPoint =  String(position[0]) + String(position[1]) 
             listshootA.push(shootPoint)  
 
             const typeShoot = checkShoot(shootPoint,liveB,positions_P2,location_P2,Player1)
         
-            console.log(`Shoot #${numShootA} to ${position}:${typeShoot}`)
+            console.log(`Shoot #${numShootA} to ${position[0]}${lineABC[position[1]]}:${typeShoot}`)
 
             console.log("Own board:")
-            board.viewBoarsPlayerGame(Player1,Player2,listshootB,positions_P1)
+            viewBoarsPlayerGame(Player1,Player2,listshootB,positions_P1)
 
             console.log("Enemy board:")
-            board.viewBoarsPlayerGameEnemy(Player1,listshootA)
+            viewBoarsPlayerGameEnemy(Player1,listshootA)
             console.log("")
             
             ++numShootA
@@ -111,20 +135,20 @@ function startGame(Player1,positions_P1,Player2,positions_P2){
             console.log(`Round ${countRoundB} for ${turnPlayer}`)
             console.log("=============")
 
-            const position = funct.Buscar_Posicion_Inicial(listshootB)
+            const position = Buscar_Posicion_Inicial(listshootB)
 
-            shootPoint =  String(position[0]) + String(position[1]) 
+            let shootPoint =  String(position[0]) + String(position[1]) 
             listshootB.push(shootPoint)  
 
             const typeShoot = checkShoot(shootPoint,liveA,positions_P1,location_P1,Player2)
         
-            console.log(`Shoot #${numShootB} to ${position}:${typeShoot}`)
+            console.log(`Shoot #${numShootB} to ${position[0]}${lineABC[position[1]]}:${typeShoot}`)
 
             console.log("Own board:")
-            board.viewBoarsPlayerGame(Player2,Player1,listshootA,positions_P2)
+            viewBoarsPlayerGame(Player2,Player1,listshootA,positions_P2)
 
             console.log("Enemy board:")
-            board.viewBoarsPlayerGameEnemy(Player2,listshootB)
+            viewBoarsPlayerGameEnemy(Player2,listshootB)
 
             ++numShootB
 
@@ -202,7 +226,12 @@ function checkShoot(shootPoint,lives,positions,location,Player){
             
 
         } else{
-            Player.shooter[shootPoint] = typeShoot    
+            Player.shooter[shootPoint] = typeShoot   
+            // if  (Player.cod == "p1"){
+            //     listTouchedA.push(shootPoint)
+            // }else{
+            //     listTouchedB.push(shootPoint)   
+            // }
         }      
     }else{
         Player.shooter[shootPoint] = typeShoot
@@ -230,6 +259,31 @@ function SearchLocation(Player){
     return locationDic
 
 }
+
+// function askForShot(Player1,listshootA){
+
+//     if  (Player.cod == "p1"){
+    
+//         if (listTouchedA.length == 0 ){
+//             const position = funct.Buscar_Posicion_Inicial(listshootA)
+//         } else{
+//             let position = listTouchedA[0]
+
+
+//         }
+
+//     }else{
+         
+//     }
+
+
+
+//     console.log(listTouch)
+
+
+//     return position 
+
+// }
 
 
 

@@ -1,9 +1,9 @@
 // FUNCIONES
 
-module.exports = {
+/*module.exports = {
     "buscar_posiciones": buscar_posiciones,
     "Buscar_Posicion_Inicial":Buscar_Posicion_Inicial
-}
+}*/
 
 
 
@@ -11,7 +11,7 @@ module.exports = {
 
 /* Funciones */
 
-function buscar_posiciones (Player){
+export function buscar_posiciones (Player){
     let positions_Play=[]
     
     for (let key of Object.keys(Player.ships)){
@@ -23,11 +23,11 @@ function buscar_posiciones (Player){
         while(position_ship>0){
             let cordenadas= Buscar_Posicion_Inicial(positions_Play)// Buscamos la posición inicial vacía
          
-            pos_x = cordenadas[0]
-            pos_y = cordenadas[1]
+            let pos_x = cordenadas[0]
+            let pos_y = cordenadas[1]
             let direction  = valor_aletorio(-1,2)
             let validar_posicion
-            let posicion_total = 00
+            let posicion_total = "00"
 
             //Revisión de espacio disponible y cogemos posiciones
             if (direction == 0){
@@ -78,6 +78,7 @@ function validar_espacio_horizontal(position_ship,pos_x,pos_y,positions_Play){
     let nposition = position_ship
     let valido = "S"
     let posicion_total=[]
+    let pos_x_new 
     while(nposition>0){
         if (pos_x>=5){
             pos_x_new = pos_x - nposition
@@ -100,9 +101,10 @@ function validar_espacio_horizontal(position_ship,pos_x,pos_y,positions_Play){
 }
 
 function validar_espacio_vertical(position_ship,pos_x,pos_y,positions_Play){
-    nposition = position_ship
-    valido = "S"
-    posicion_total = []
+    let nposition = position_ship
+    let valido = "S"
+    let posicion_total = []
+    let pos_y_new 
     while(nposition>0){
         if (pos_y>=5){
             pos_y_new = pos_y - nposition
@@ -126,8 +128,8 @@ function validar_espacio_vertical(position_ship,pos_x,pos_y,positions_Play){
 }
 
 
-function Buscar_Posicion_Inicial(positions_Play){
-    valido = "N"
+export function Buscar_Posicion_Inicial(positions_Play){
+    let valido = "N"
     let pos_x=0
     let pos_y=0
     while(valido=="N"){

@@ -1,11 +1,11 @@
 // TABLERO
 
-module.exports = {
+/*module.exports = {
        "viewBoars": viewBoars,
        "viewBoarsPlayer":viewBoarsPlayer,
        "viewBoarsPlayerGame":viewBoarsPlayerGame,
        "viewBoarsPlayerGameEnemy":viewBoarsPlayerGameEnemy
-   }
+   }*/
 
 // filas del tablero
 const ROWS = 10
@@ -14,9 +14,24 @@ const COLS = 10
 // figuras disponibles para las cartas
 const FIGURES = ['⚓']
 
+
+//Lista de valores verticales
+const lineABC = {
+       0 : "A",
+       1 : "B",
+       2 : "C",
+       3 : "D",
+       4 : "E",
+       5 : "F",
+       6 : "G",
+       7 : "H",
+       8 : "I",
+       9 : "J"  
+}
+
 let board = []
 
-function viewBoars(){
+export function viewBoars(){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
 
               let lineBoard = ''
@@ -47,8 +62,7 @@ function viewBoars(){
        
 }
 
-
-function viewBoarsPlayer(Player,positions_Play){
+export function viewBoarsPlayer(Player,positions_Play){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
               let pos_x = numRows-1
               
@@ -60,7 +74,8 @@ function viewBoarsPlayer(Player,positions_Play){
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
-                            let numColsString = String(numCols)        
+                            //let numColsString = String(numCols)        
+                            let numColsString = lineABC[numCols]
                             lineBoard += '   '+numColsString+'  │'
                      } 
                      console.log(lineBoard)
@@ -77,7 +92,7 @@ function viewBoarsPlayer(Player,positions_Play){
                                    if (element == undefined){ 
                                           lineBoard += " '"+FIGURES[0] +"' │"
                                    }else{
-                                          figureImg = searchFigures(Player,location)    
+                                          let figureImg = searchFigures(Player,location)    
                                           lineBoard += " '"+figureImg+"' │"
 
                                    }
@@ -92,8 +107,7 @@ function viewBoarsPlayer(Player,positions_Play){
        
 }
 
-
-function searchFigures(Player,location){
+export function searchFigures(Player,location){
        let figureImg= FIGURES[0]
        for (let key of Object.keys(Player.ships)){
               const locationShip = Player.ships[key].location
@@ -111,8 +125,7 @@ function searchFigures(Player,location){
        return figureImg
 }
 
-
-function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
+export function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
               let pos_x = numRows-1
               
@@ -124,7 +137,8 @@ function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
-                            let numColsString = String(numCols)        
+                            //let numColsString = String(numCols)        
+                            let numColsString = lineABC[numCols]
                             lineBoard += '   '+numColsString+'  │'
                      } 
                      console.log(lineBoard)
@@ -144,14 +158,14 @@ function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
                                           if (elementPosicion == undefined){ 
                                                  lineBoard += " '"+FIGURES[0] +"' │"
                                           }else{
-                                                 figureImg = searchFigures(PlayerBoard,location)    
+                                                 let figureImg = searchFigures(PlayerBoard,location)    
                                                  lineBoard += " '"+figureImg+"' │"
 
                                           }
 
                                    }else{
                                           
-                                          figureImg = PlayerEnemy.shooter[location]  
+                                          let figureImg = PlayerEnemy.shooter[location]  
                                           lineBoard += " '"+figureImg+"' │"
 
                                    }
@@ -166,7 +180,7 @@ function viewBoarsPlayerGame(PlayerBoard,PlayerEnemy,listshoot,positions_Play){
        
 }
 
-function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
+export function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
        for(let numRows = 0; numRows < ROWS+1; numRows++) {
               let pos_x = numRows-1
               
@@ -178,7 +192,8 @@ function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
                      lineBoard ="│ (index) |"
                      for(let numCols = 0; numCols < COLS; numCols++){
                      
-                            let numColsString = String(numCols)        
+                            //let numColsString = String(numCols)  
+                            let numColsString = lineABC[numCols]      
                             lineBoard += '   '+numColsString+'  │'
                      } 
                      console.log(lineBoard)
@@ -196,7 +211,7 @@ function viewBoarsPlayerGameEnemy(PlayerBoard,listshoot){
                                           lineBoard += " '"+FIGURES[0] +"' │"
                                    }else{
                                           
-                                          figureImg = PlayerBoard.shooter[location]  
+                                          let figureImg = PlayerBoard.shooter[location]  
                                           lineBoard += " '"+figureImg+"' │"
 
                                    }
